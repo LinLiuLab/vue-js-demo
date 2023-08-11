@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div data-theme="cupcake">
+        <div class="navbar bg-base-300 text-base-content fixed top-0">
+            <a class="btn btn-ghost normal-case text-xl">Document Manage</a>
+        </div>
+        <router-view />
+        <footer
+            class="footer footer-center p-4 bg-base-300 text-base-content"
+            style="position: fixed; bottom: 0"
+        >
+            <div>
+                <p>
+                    Copyright © 2023 - All right reserved by SE 2023 Teaching
+                    Group
+                </p>
+            </div>
+        </footer>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    name: "App",
+    data() {
+        return {};
+    },
+    mounted() {},
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>

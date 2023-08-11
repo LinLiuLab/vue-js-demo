@@ -1,5 +1,10 @@
 # vue-js-demo
 
+## Frameworks
+- Vue.js
+- Tailwind CSS
+- DaisyUI (as a Tailwind CSS plugin)
+
 ## Project setup
 ```
 npm install
