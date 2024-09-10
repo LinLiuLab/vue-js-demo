@@ -1,7 +1,7 @@
 <template>
     <div class="h-screen w-screen">
         <div>
-            <div v-if="documents.length > 0" class="pt-20">
+            <div v-if="documents != None && documents.length > 0" class="pt-20">
                 <DocumentCard
                     v-for="(doc, index) in documents"
                     v-bind:key="index"
@@ -10,7 +10,7 @@
                     :title="doc.title"
                     :content="doc.content"
                     :id="doc.id"
-                    :cover="doc.cover"
+                    :published="doc.published"
                     style="
                         margin-top: 30px;
                         width: 33%;
@@ -107,16 +107,6 @@
                         class="textarea input-bordered textarea-md"
                         v-model="new_doc.content"
                     ></textarea>
-
-                    <label class="label">
-                        <span class="label-text">Cover URL</span>
-                    </label>
-                    <input
-                        type="text"
-                        v-model="new_doc.cover"
-                        class="text-2xl input input-bordered"
-                        style="width: 100%"
-                    />
                 </div>
 
                 <div class="flex float-right">
@@ -171,13 +161,14 @@ export default {
         new_doc: {
             title: "",
             content: "",
-            cover: "",
+            published: true,
         },
         showAddModal: false,
         showDeleteModal: false,
         delete_doc: {
             id: -1,
             title: "",
+            published: true,
         },
     }),
     mounted() {
@@ -186,9 +177,9 @@ export default {
     methods: {
         getDocuments() {
             axios
-                .get(this.base_url + "document")
+                .get(this.base_url + "document/")
                 .then((response) => {
-                    this.documents = response.data.data;
+                    this.documents = response.data.documents;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -207,6 +198,7 @@ export default {
             this.delete_doc = {
                 id: id,
                 title: title,
+                published: true,
             };
             this.toggleDeleteModal();
         },
@@ -215,7 +207,7 @@ export default {
         },
         addDocument() {
             axios
-                .post(this.base_url + "document", this.new_doc)
+                .post(this.base_url + "document/", this.new_doc)
                 .then((response) => {
                     console.log(response);
                     // close modal
@@ -226,7 +218,7 @@ export default {
                     this.new_doc = {
                         title: "",
                         content: "",
-                        cover: "",
+                        published: true,
                     };
                     // show toast
                     startWindToast("Add document successfully!", "success");

@@ -10,7 +10,7 @@
         >
             <div>
                 <p>
-                    Copyright © 2023 - All right reserved by SE 2023 Teaching
+                    Copyright © 2024 - All right reserved by SE 2024 Teaching
                     Group
                 </p>
             </div>

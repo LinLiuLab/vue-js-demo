@@ -12,7 +12,6 @@
                 </button>
             </div>
         </div>
-        <figure v-if="cover !== ''"><img :src="cover" alt="cover_image" class="max-w-sm rounded-lg shadow-2xl" /></figure>
     </div>
     <div v-else class="card bg-base-100 shadow-xl">
         <div class="card-body">
@@ -37,7 +36,6 @@
                 </button>
             </div>
         </div>
-        <figure><img :src="cover" alt="cover_image" /></figure>
     </div>
 </template>
 
@@ -52,7 +50,7 @@ export default {
         id: Number,
         title: String,
         content: String,
-        cover: String,
+        published: Boolean,
     },
     data() {
         return {
@@ -62,7 +60,7 @@ export default {
                 id: this.id,
                 title: this.title,
                 content: this.content,
-                cover: this.cover,
+                published: this.published,
             },
         };
     },
@@ -75,7 +73,7 @@ export default {
                 id: this.id,
                 title: this.title,
                 content: this.content,
-                cover: this.cover,
+                published: this.published,
             };
             this.if_edit = true;
         },
@@ -83,7 +81,7 @@ export default {
             this.if_edit = false;
             axios
                 .put(
-                    this.base_url + "document/" + this.edit_doc.id,
+                    this.base_url + "document/" + this.edit_doc.id + "/",
                     this.edit_doc
                 )
                 .then((response) => {
