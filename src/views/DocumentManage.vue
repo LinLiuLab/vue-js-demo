@@ -137,7 +137,7 @@
                         <button class="btn btn-error" @click="deleteDocument">
                             Delete
                         </button>
-                        <button class="btn btn-ghost ml-3">Close</button>
+                        <button class="btn btn-ghost ml-3" @click="toggleDeleteModal">Close</button>
                     </div>
                 </div>
             </form>
